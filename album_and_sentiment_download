@@ -18,27 +18,28 @@ library(genius)
 off_radar <- genius_lyrics(artist = "Wiley", song = "Off The Radar")
 off_radar
 
-too_many_man <- genius_lyrics(artist = "Wiley", song = "Too Many Man")​
+too_many_man <- genius_lyrics(artist = "Wiley", song = "Too Many Man")
 too_many_man
 
-wheres_brother <- genius_lyrics(artist = "Wiley", song = "Wheres My Brother")​
+wheres_brother <- genius_lyrics(artist = "Wiley", song = "Wheres My Brother")
 wheres_brother
 
-shes_glowing <- genius_lyrics(artist = "Wiley", song = "Shes Glowing (Remix)")​
+shes_glowing <- genius_lyrics(artist = "Wiley", song = "Shes Glowing (Remix)")
 shes_glowing
 
-out_of_game <- genius_lyrics(artist = "Wiley", song = "Out of the Game")​
+out_of_game <- genius_lyrics(artist = "Wiley", song = "Out of the Game")
 out_of_game
 
-bang <- genius_lyrics(artist = "Wiley", song = "Bang (Ft. Ghetts)")​
+bang <- genius_lyrics(artist = "Wiley", song = "Bang (Ft. Ghetts)")
 bang
 
-zip_it_up <- genius_lyrics(artist = "Wiley", song = "Zip It Up")​
+zip_it_up <- genius_lyrics(artist = "Wiley", song = "Zip It Up")
 zip_it_up
 
 race_against_time <- bind_rows(bang, off_radar, out_of_game, shes_glowing, too_many_man, wheres_brother, zip_it_up)
 
 #the rest of the albums, and other years are below
+#not all albums were used in the line plot because R kept continuing to crash
 #NB: track_n has also been removed from each so that it would later bind with the race_against_time data frame, which did not have this because it came from individual songs and not albums
 
 #2009
