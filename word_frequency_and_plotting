@@ -1,0 +1,174 @@
+#using grid.arrange to plot graphs for comparison
+#this was done with music from the whole year
+plot_2009 <- year_2009 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2009")
+  
+plot_2010 <- year_2010 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2010") 
+
+plot_2011 <- year_2011 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2011") 
+
+plot_2012 <- year_2012 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2012") 
+
+plot_2013 <- year_2013 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2013") 
+
+plot_2014 <- year_2014 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2014") 
+
+plot_2015 <- year_2015 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2015") 
+
+plot_2016 <- year_2016 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2016") 
+
+plot_2017 <- year_2017 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2017")
+
+plot_2018 <- year_2018 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2018") 
+
+plot_2019 <- year_2019 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2019") 
+
+grid.arrange(plot_2009, plot_2010, plot_2011, plot_2012, plot_2013, plot_2014, plot_2015, plot_2016, plot_2017, plot_2018, plot_2019, nrow = 3)
+
+
+#also done for individual years, comparing them with pop albums
+
+plot_2009 <- year_2009 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "red")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2009")
+ 
+#wanted to compare this to pop music in 2009, so this was scraped and made into a data frame as well
+  
+#2009 British pop albums topping the official charts in 2009
+susan_boyle <- genius_album(artist = "Susan Boyle", album = "I Dreamed a Dream")
+susan_boyle$artist = "Susan Boyle"
+jls <- genius_album(artist = "JLS", album = "JLS")
+jls$artist = "JLS"
+lily_allen <- genius_album(artist = "Lily Allen", album = "It's Not Me, It's You")
+lily_allen$artist = "Lily Allen"
+paolo_nutini <- genius_album(artist = "Paolo Nutini", album = "Sunny Side Up")
+paolo_nutini$artist = "Paolo Nutini"
+robbie_williams <- genius_album(artist = "Robbie Williams", album = "Reality Killed the Video Star")
+robbie_williams$artist = "Robbie Williams"
+
+pop_2009 <- rbind(susan_boyle, jls, lily_allen, paolo_nutini, robbie_williams)
+
+pop_2009_plot <- pop_2009 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  count(word, sort = TRUE) %>%
+  top_n(15) %>%
+  ggplot(aes(reorder(word, n), n, fill = "tomato")) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  theme_economist() +
+  labs(x = "Word", y = "Occurances", title = "2009 British pop albums") 
+  
+#comparing with 2009 grime
+
+grid.arrange(plot_2009_grime, pop_2009_plot, ncol = 2) 
+
+
+
+
+ 
