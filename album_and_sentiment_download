@@ -1,0 +1,146 @@
+#required libraries
+
+library(tidytext)
+library(ggplot2)
+library(ggthemes)
+library(dplyr)
+library(gridExtra)
+
+devtools::install_github("josiahparry/genius")
+library(genius)
+install.packages("tidyverse")
+library(tidyverse)
+
+#race_against_time by Wiley wouldn't work when directly downloaded, so songs have to be downloaded separately
+
+library(genius)
+
+off_radar <- genius_lyrics(artist = "Wiley", song = "Off The Radar")
+off_radar
+
+too_many_man <- genius_lyrics(artist = "Wiley", song = "Too Many Man")​
+too_many_man
+
+wheres_brother <- genius_lyrics(artist = "Wiley", song = "Wheres My Brother")​
+wheres_brother
+
+shes_glowing <- genius_lyrics(artist = "Wiley", song = "Shes Glowing (Remix)")​
+shes_glowing
+
+out_of_game <- genius_lyrics(artist = "Wiley", song = "Out of the Game")​
+out_of_game
+
+bang <- genius_lyrics(artist = "Wiley", song = "Bang (Ft. Ghetts)")​
+bang
+
+zip_it_up <- genius_lyrics(artist = "Wiley", song = "Zip It Up")​
+zip_it_up
+
+race_against_time <- bind_rows(bang, off_radar, out_of_game, shes_glowing, too_many_man, wheres_brother, zip_it_up)
+
+#the rest of the albums, and other years are below
+#NB: not all album years are included, as I had to scale down the amount of data used due to R crashing
+#track_n has also been removed from each so that it would later bind with the race_against_time data frame, which did not have this because it came from individual songs and not albums
+
+#2009
+microphone_champion <- genius_album(artist = "Skepta", album = "Microphone Champion")
+microphone_champion$track_n <- NULL
+catch_22 <- genius_album(artist = "Tinchy Stryder", album = "Catch 22")
+catch_22$track_n <- NULL
+tongue_n_cheek <- genius_album(artist = "Dizzee Rascal", album = "Tongue n' Cheek")
+tongue_n_cheek$track_n <- NULL
+i_am_chipmunk <- genius_album(artist = "Chip", album = "I Am Chipmunk")
+i_am_chipmunk$track_n <- NULL
+
+
+#2016
+konnichiwa <- genius_album(artist = "Skepta", album = "Konnichiwa")
+konnichiwa$track_n <- NULL
+made_in_the_manor <- genius_album(artist = "Kano", album = "Made In The Manor")
+made_in_the_manor$track_n <- NULL
+landlord <- genius_album(artist = "Giggs", album = "Landlord")
+landlord$track_n <- NULL
+growing_over_life <- genius_album(artist = "Wretch 32", album = "Growing Over Life")
+growing_over_life$track_n <- NULL
+full_moon <- genius_album(artist = "Yxng Bane", album = "Full Moon")
+full_moon$track_n <- NULL
+
+
+#2017
+gang_signs_and_prayer <- genius_album(artist = "Stormzy", album = "Gang Signs & Prayer")
+gang_signs_and_prayer$track_n <- NULL
+king_of_the_north <- genius_album(artist = "Bugzy Malone", album = "King of the North")
+king_of_the_north$track_n <- NULL
+godfather <- genius_album(artist = "Wiley", album = "Godfather")
+godfather$track_n <- NULL
+raskit <- genius_album(artist = "Dizzee Rascal", album = "Raskit")
+raskit$track_n <- NULL
+common_sense <- genius_album(artist = "J Hus", album = "Common Sense")
+common_sense$track_n <- NULL
+
+
+#2019
+aj_tracey <- genius_album(artist = "AJ Tracey", album = "AJ Tracey")
+aj_tracey$track_n <- NULL
+dave <- genius_album(artist = "Dave", album = "Psychodrama")
+dave$track_n <- NULL
+big_bad <- genius_album(artist = "Giggs", album = "Big Bad")
+big_bad$track_n <- NULL
+
+
+#combining albums by year, and adding year column when binding
+year_2009 <- rbind(race_against_time, microphone_champion, tongue_n_cheek, i_am_chipmunk, catch_22)
+year_2009$year="2009" 
+
+year_2016 <- rbind(konnichiwa, made_in_the_manor, landlord, growing_over_life, full_moon)
+year_2016$year="2016"
+
+year_2017 <- rbind(gang_signs_and_prayer, king_of_the_north, godfather, raskit, common_sense)
+year_2017$year="2017"
+
+year_2019 <- rbind(aj_tracey, dave, big_bad)
+year_2019$year="2019"
+
+#sentiments and custom stop words
+
+#anger
+anger_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "anger")
+
+#trust
+trust_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "trust")
+
+#anticipation
+anticipation_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "anticipation")
+
+#fear
+fear_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "fear")
+
+#joy
+joy_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "joy")
+
+#surprise
+surprise_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "surprise")
+
+#disgust
+disgust_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "disgust")
+
+#sadness
+sadness_sentiment <- get_sentiments("nrc") %>%
+filter(sentiment == "sadness")
+
+#stop words
+library(tidytext)
+custom_stop_words_2 <- bind_rows(stop_words,
+                                 data_frame(word = c("yeah", "wanna", "gonna", "eh", "ah", "uh", "nah", "em", "ya", "yo", "dem", "woah", "whoa", "girl", "ooh", "pah", "wot", "bizzle", "la", "doo"),
+                                            lexicon = "custom"))
+
+
+
+
