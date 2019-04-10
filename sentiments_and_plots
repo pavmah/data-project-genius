@@ -1,0 +1,2459 @@
+#plotting each artist/album's sentiment figures
+#this ended up being done for only 4 years out of the 11 as it was too much for R to hold
+
+#2009 anger
+wiley_09_anger <- race_against_time %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(anger_sentiment) %>%
+  count(word, sort = TRUE)
+
+wiley_09_anger$total = "44"
+wiley_09_anger$sentiment = "Anger"
+wiley_09_anger$artist = "Wiley - Race Against Time"
+wiley_09_anger$date = "08/06/09"
+wiley_09_anger$date <- as.Date(wiley_09_anger$date, "%d/%m/%y")
+
+###
+
+tinchy_09_anger <- catch_22 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(anger_sentiment) %>%
+  count(word, sort = TRUE)
+
+tinchy_09_anger$total = "51"
+tinchy_09_anger$sentiment = "Anger"
+tinchy_09_anger$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_anger$date = "17/08/09"
+tinchy_09_anger$date <- as.Date(tinchy_09_anger$date, "%d/%m/%y")
+
+###
+
+skepta_09_anger <- microphone_champion %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(anger_sentiment) %>%
+  count(word, sort = TRUE)
+
+skepta_09_anger$total = "49"
+skepta_09_anger$sentiment = "Anger"
+skepta_09_anger$artist = "Skepta - Microphone Champion"
+skepta_09_anger$date = "01/06/09"
+skepta_09_anger$date <- as.Date(skepta_09_anger$date, "%d/%m/%y")
+
+###
+
+dizzee_09_anger <- tongue_n_cheek %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(anger_sentiment) %>%
+  count(word, sort = TRUE)
+
+dizzee_09_anger$total = "52"
+dizzee_09_anger$sentiment = "Anger"
+dizzee_09_anger$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_anger$date = "20/09/09"
+dizzee_09_anger$date <- as.Date(dizzee_09_anger$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_anger <- i_am_chipmunk %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(anger_sentiment) %>%
+  count(word, sort = TRUE)
+
+chipmunk_09_anger$total = "60"
+chipmunk_09_anger$sentiment = "Anger"
+chipmunk_09_anger$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_anger$date = "09/10/09"
+chipmunk_09_anger$date <-
+  as.Date(chipmunk_09_anger$date, "%d/%m/%y")
+
+overall_2009_anger <-
+  bind_rows(
+    chipmunk_09_anger,
+    dizzee_09_anger,
+    skepta_09_anger,
+    tinchy_09_anger,
+    wiley_09_anger
+  )
+
+###
+
+#2009 trust
+wiley_09_trust <- race_against_time %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(trust_sentiment) %>%
+  count(word, sort = TRUE)
+
+wiley_09_trust$total = "51"
+wiley_09_trust$sentiment = "Trust"
+wiley_09_trust$artist = "Wiley - Race Against Time"
+wiley_09_trust$date = "08/06/09"
+wiley_09_trust$date <- as.Date(wiley_09_trust$date, "%d/%m/%y")
+
+###
+
+tinchy_09_trust <- catch_22 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(trust_sentiment) %>%
+  count(word, sort = TRUE)
+
+tinchy_09_trust$total = "64"
+tinchy_09_trust$sentiment = "Trust"
+tinchy_09_trust$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_trust$date = "17/08/09"
+tinchy_09_trust$date <- as.Date(tinchy_09_trust$date, "%d/%m/%y")
+
+###
+
+skepta_09_trust <- microphone_champion %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(trust_sentiment) %>%
+  count(word, sort = TRUE)
+
+skepta_09_trust$total = "49"
+skepta_09_trust$sentiment = "Trust"
+skepta_09_trust$artist = "Skepta - Microphone Champion"
+skepta_09_trust$date = "01/06/09"
+skepta_09_trust$date <- as.Date(skepta_09_trust$date, "%d/%m/%y")
+
+###
+
+dizzee_09_trust <- tongue_n_cheek %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(trust_sentiment) %>%
+  count(word, sort = TRUE)
+
+dizzee_09_trust$total = "57"
+dizzee_09_trust$sentiment = "Trust"
+dizzee_09_trust$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_trust$date = "20/09/09"
+dizzee_09_trust$date <- as.Date(dizzee_09_trust$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_trust <- i_am_chipmunk %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+chipmunk_09_trust$total = "69"
+chipmunk_09_trust$sentiment = "Trust"
+chipmunk_09_trust$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_trust$date = "09/10/09" 
+chipmunk_09_trust$date <-
+  as.Date(chipmunk_09_trust$date, "%d/%m/%y")
+
+overall_2009_trust <-
+  bind_rows(
+    chipmunk_09_trust,
+    dizzee_09_trust,
+    skepta_09_trust,
+    tinchy_09_trust,
+    wiley_09_trust
+  )
+
+#2009 anticipation
+wiley_09_anticipation <- race_against_time %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_09_anticipation$total = "33"
+wiley_09_anticipation$sentiment = "Anticipation"
+wiley_09_anticipation$artist = "Wiley - Race Against Time"
+wiley_09_anticipation$date = "08/06/09" 
+wiley_09_anticipation$date <-
+  as.Date(wiley_09_anticipation$date, "%d/%m/%y")
+
+###
+
+tinchy_09_anticipation <- catch_22 %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+tinchy_09_anticipation$total = "56"
+tinchy_09_anticipation$sentiment = "Anticipation"
+tinchy_09_anticipation$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_anticipation$date = "17/08/09" 
+tinchy_09_anticipation$date <-
+  as.Date(tinchy_09_anticipation$date, "%d/%m/%y")
+
+###
+
+skepta_09_anticipation <- microphone_champion %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_09_anticipation$total = "32"
+skepta_09_anticipation$sentiment = "Anticipation"
+skepta_09_anticipation$artist = "Skepta - Microphone Champion"
+skepta_09_anticipation$date = "01/06/09" 
+skepta_09_anticipation$date <-
+  as.Date(skepta_09_anticipation$date, "%d/%m/%y")
+
+###
+
+dizzee_09_anticipation <- tongue_n_cheek %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_09_anticipation$total = "49"
+dizzee_09_anticipation$sentiment = "Anticipation"
+dizzee_09_anticipation$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_anticipation$date = "20/09/09" 
+dizzee_09_anticipation$date <-
+  as.Date(dizzee_09_anticipation$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_anticipation <- i_am_chipmunk %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+chipmunk_09_anticipation$total = "48"
+chipmunk_09_anticipation$sentiment = "Anticipation"
+chipmunk_09_anticipation$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_anticipation$date = "09/10/09" 
+chipmunk_09_anticipation$date <-
+  as.Date(chipmunk_09_anticipation$date, "%d/%m/%y")
+
+overall_2009_anticipation <-
+  bind_rows(
+    chipmunk_09_anticipation,
+    dizzee_09_anticipation,
+    skepta_09_anticipation,
+    tinchy_09_anticipation,
+    wiley_09_anticipation
+  )
+
+#2009 fear
+wiley_09_fear <- race_against_time %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_09_fear$total = "39"
+wiley_09_fear$sentiment = "Fear"
+wiley_09_fear$artist = "Wiley - Race Against Time"
+wiley_09_fear$date = "08/06/09" 
+wiley_09_fear$date <- as.Date(wiley_09_fear$date, "%d/%m/%y")
+
+###
+
+tinchy_09_fear <- catch_22 %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+tinchy_09_fear$total = "61"
+tinchy_09_fear$sentiment = "Fear"
+tinchy_09_fear$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_fear$date = "17/08/09" 
+tinchy_09_fear$date <- as.Date(tinchy_09_fear$date, "%d/%m/%y")
+
+###
+
+skepta_09_fear <- microphone_champion %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_09_fear$total = "53"
+skepta_09_fear$sentiment = "Fear"
+skepta_09_fear$artist = "Skepta - Microphone Champion"
+skepta_09_fear$date = "01/06/09" 
+skepta_09_fear$date <- as.Date(skepta_09_fear$date, "%d/%m/%y")
+
+###
+
+dizzee_09_fear <- tongue_n_cheek %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_09_fear$total = "55"
+dizzee_09_fear$sentiment = "Fear"
+dizzee_09_fear$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_fear$date = "20/09/09" 
+dizzee_09_fear$date <- as.Date(dizzee_09_fear$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_fear <- i_am_chipmunk %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+chipmunk_09_fear$total = "64"
+chipmunk_09_fear$sentiment = "Fear"
+chipmunk_09_fear$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_fear$date = "09/10/09" 
+chipmunk_09_fear$date <- as.Date(chipmunk_09_fear$date, "%d/%m/%y")
+
+overall_2009_fear <-
+  bind_rows(chipmunk_09_fear,
+            dizzee_09_fear,
+            skepta_09_fear,
+            tinchy_09_fear,
+            wiley_09_fear)
+
+#2009 joy
+wiley_09_joy <- race_against_time %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_09_joy$total = "37"
+wiley_09_joy$sentiment = "Joy"
+wiley_09_joy$artist = "Wiley - Race Against Time"
+wiley_09_joy$date = "08/06/09" 
+wiley_09_joy$date <- as.Date(wiley_09_joy$date, "%d/%m/%y")
+
+###
+
+tinchy_09_joy <- catch_22 %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+tinchy_09_joy$total = "56"
+tinchy_09_joy$sentiment = "Joy"
+tinchy_09_joy$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_joy$date = "17/08/09" 
+tinchy_09_joy$date <- as.Date(tinchy_09_joy$date, "%d/%m/%y")
+
+###
+
+skepta_09_joy <- microphone_champion %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_09_joy$total = "31"
+skepta_09_joy$sentiment = "Joy"
+skepta_09_joy$artist = "Skepta - Microphone Champion"
+skepta_09_joy$date = "01/06/09" 
+skepta_09_joy$date <- as.Date(skepta_09_joy$date, "%d/%m/%y")
+
+###
+
+dizzee_09_joy <- tongue_n_cheek %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_09_joy$total = "51"
+dizzee_09_joy$sentiment = "Joy"
+dizzee_09_joy$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_joy$date = "20/09/09" 
+dizzee_09_joy$date <- as.Date(dizzee_09_joy$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_joy <- i_am_chipmunk %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+chipmunk_09_joy$total = "56"
+chipmunk_09_joy$sentiment = "Joy"
+chipmunk_09_joy$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_joy$date = "09/10/09" 
+chipmunk_09_joy$date <- as.Date(chipmunk_09_joy$date, "%d/%m/%y")
+
+overall_2009_joy <-
+  bind_rows(chipmunk_09_joy,
+            dizzee_09_joy,
+            skepta_09_joy,
+            tinchy_09_joy,
+            wiley_09_joy)
+
+#2009 surprise
+wiley_09_surprise <- race_against_time %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_09_surprise$total = "25"
+wiley_09_surprise$sentiment = "Surprise"
+wiley_09_surprise$artist = "Wiley - Race Against Time"
+wiley_09_surprise$date = "08/06/09" 
+wiley_09_surprise$date <-
+  as.Date(wiley_09_surprise$date, "%d/%m/%y")
+
+###
+
+tinchy_09_surprise <- catch_22 %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+tinchy_09_surprise$total = "34"
+tinchy_09_surprise$sentiment = "Surprise"
+tinchy_09_surprise$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_surprise$date = "17/08/09" 
+tinchy_09_surprise$date <-
+  as.Date(tinchy_09_surprise$date, "%d/%m/%y")
+
+###
+
+skepta_09_surprise <- microphone_champion %>% 
+unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(surprise_sentiment) %>%
+  count(word, sort = TRUE)
+
+skepta_09_surprise$total = "26"
+skepta_09_surprise$sentiment = "Surprise"
+skepta_09_surprise$artist = "Skepta - Microphone Champion"
+skepta_09_surprise$date = "01/06/09"
+skepta_09_surprise$date <-
+  as.Date(skepta_09_surprise$date, "%d/%m/%y")
+
+###
+
+dizzee_09_surprise <- tongue_n_cheek %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(surprise_sentiment) %>%
+  count(word, sort = TRUE)
+
+dizzee_09_surprise$total = "33"
+dizzee_09_surprise$sentiment = "Surprise"
+dizzee_09_surprise$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_surprise$date = "20/09/09"
+dizzee_09_surprise$date <-
+  as.Date(dizzee_09_surprise$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_surprise <- i_am_chipmunk %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(surprise_sentiment) %>%
+  count(word, sort = TRUE)
+
+chipmunk_09_surprise$total = "34"
+chipmunk_09_surprise$sentiment = "Surprise"
+chipmunk_09_surprise$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_surprise$date = "09/10/09"
+chipmunk_09_surprise$date <-
+  as.Date(chipmunk_09_surprise$date, "%d/%m/%y")
+
+overall_2009_surprise <-
+  bind_rows(
+    chipmunk_09_surprise,
+    dizzee_09_surprise,
+    skepta_09_surprise,
+    tinchy_09_surprise,
+    wiley_09_surprise
+  )
+
+#2009 disgust
+wiley_09_disgust <- race_against_time %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(disgust_sentiment) %>%
+  count(word, sort = TRUE)
+
+wiley_09_disgust$total = "25"
+wiley_09_disgust$sentiment = "Disgust"
+wiley_09_disgust$artist = "Wiley - Race Against Time"
+wiley_09_disgust$date = "08/06/09"
+wiley_09_disgust$date <- as.Date(wiley_09_disgust$date, "%d/%m/%y")
+
+###
+
+tinchy_09_disgust <- catch_22 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(disgust_sentiment) %>%
+  count(word, sort = TRUE)
+
+tinchy_09_disgust$total = "32"
+tinchy_09_disgust$sentiment = "Disgust"
+tinchy_09_disgust$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_disgust$date = "17/08/09"
+tinchy_09_disgust$date <-
+  as.Date(tinchy_09_disgust$date, "%d/%m/%y")
+
+###
+
+skepta_09_disgust <- microphone_champion %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(disgust_sentiment) %>%
+  count(word, sort = TRUE)
+
+skepta_09_disgust$total = "26"
+skepta_09_disgust$sentiment = "Disgust"
+skepta_09_disgust$artist = "Skepta - Microphone Champion"
+skepta_09_disgust$date = "01/06/09"
+skepta_09_disgust$date <-
+  as.Date(skepta_09_disgust$date, "%d/%m/%y")
+
+###
+
+dizzee_09_disgust <- tongue_n_cheek %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(disgust_sentiment) %>%
+  count(word, sort = TRUE)
+
+dizzee_09_disgust$total = "38"
+dizzee_09_disgust$sentiment = "Disgust"
+dizzee_09_disgust$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_disgust$date = "20/09/09"
+dizzee_09_disgust$date <-
+  as.Date(dizzee_09_disgust$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_disgust <- i_am_chipmunk %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(disgust_sentiment) %>%
+  count(word, sort = TRUE)
+
+chipmunk_09_disgust$total = "41"
+chipmunk_09_disgust$sentiment = "Disgust"
+chipmunk_09_disgust$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_disgust$date = "09/10/09"
+chipmunk_09_disgust$date <-
+  as.Date(chipmunk_09_disgust$date, "%d/%m/%y")
+
+overall_2009_disgust <-
+  bind_rows(
+    chipmunk_09_disgust,
+    dizzee_09_disgust,
+    skepta_09_disgust,
+    tinchy_09_disgust,
+    wiley_09_disgust
+  )
+
+#2009 sadness
+wiley_09_sadness <- race_against_time %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(sadness_sentiment) %>%
+  count(word, sort = TRUE)
+
+wiley_09_sadness$total = "34"
+wiley_09_sadness$sentiment = "Sadness"
+wiley_09_sadness$artist = "Wiley - Race Against Time"
+wiley_09_sadness$date = "08/06/09"
+wiley_09_sadness$date <- as.Date(wiley_09_sadness$date, "%d/%m/%y")
+
+###
+
+tinchy_09_sadness <- catch_22 %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(sadness_sentiment) %>%
+  count(word, sort = TRUE)
+
+tinchy_09_sadness$total = "48"
+tinchy_09_sadness$sentiment = "Sadness"
+tinchy_09_sadness$artist = "Tinchy Stryder - Catch 22"
+tinchy_09_sadness$date = "17/08/09"
+tinchy_09_sadness$date <-
+  as.Date(tinchy_09_sadness$date, "%d/%m/%y")
+
+###
+
+skepta_09_sadness <- microphone_champion %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(sadness_sentiment) %>%
+  count(word, sort = TRUE)
+
+skepta_09_sadness$total = "36"
+skepta_09_sadness$sentiment = "Sadness"
+skepta_09_sadness$artist = "Skepta - Microphone Champion"
+skepta_09_sadness$date = "01/06/09"
+skepta_09_sadness$date <-
+  as.Date(skepta_09_sadness$date, "%d/%m/%y")
+
+###
+
+dizzee_09_sadness <- tongue_n_cheek %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(sadness_sentiment) %>%
+  count(word, sort = TRUE)
+
+dizzee_09_sadness$total = "55"
+dizzee_09_sadness$sentiment = "Sadness"
+dizzee_09_sadness$artist = "Dizzee Rascal - Tongue n Cheek"
+dizzee_09_sadness$date = "20/09/09"
+dizzee_09_sadness$date <-
+  as.Date(dizzee_09_sadness$date, "%d/%m/%y")
+
+###
+
+chipmunk_09_sadness <- i_am_chipmunk %>%
+  unnest_tokens(word, lyric) %>%
+  anti_join(custom_stop_words_2) %>%
+  semi_join(sadness_sentiment) %>%
+  count(word, sort = TRUE)
+
+chipmunk_09_sadness$total = "46"
+chipmunk_09_sadness$sentiment = "Sadness"
+chipmunk_09_sadness$artist = "Chipmunk - I Am Chipmunk"
+chipmunk_09_sadness$date = "09/10/09"
+chipmunk_09_sadness$date <-
+  as.Date(chipmunk_09_sadness$date, "%d/%m/%y")
+
+overall_2009_sadness <-
+  bind_rows(
+    chipmunk_09_sadness,
+    dizzee_09_sadness,
+    skepta_09_sadness,
+    tinchy_09_sadness,
+    wiley_09_sadness
+  )
+
+sentiments_2009 <-
+  bind_rows(
+    overall_2009_fear,
+    overall_2009_joy,
+    overall_2009_anger,
+    overall_2009_anticipation,
+    overall_2009_trust,
+    overall_2009_disgust,
+    overall_2009_sadness,
+    overall_2009_surprise
+  )
+
+library(ggplot2)
+
+  ggplot(sentiments_2009,
+         aes(
+           x = date,
+           y = total,
+           color = sentiment,
+           group = sentiment
+         )) + 
+  geom_line(size = 1) +
+  geom_point(aes(key = artist), position = position_dodge(width = 0.8)) +
+  
+  xlab("Year") + 
+  ylab("Number of sentiment words") + 
+  ggtitle("Different sentiments in grime music over the last decade")  +
+  
+  theme_economist() 
+
+
+
+#anger
+skepta_16_anger <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_anger$total = "52"
+skepta_16_anger$sentiment = "Anger"
+skepta_16_anger$artist = "Skepta - Konnichiwa"
+skepta_16_anger$date = "06/05/16"
+skepta_16_anger$date <- as.Date(skepta_16_anger$date, "%d/%m/%y")
+
+###
+
+kano_16_anger <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_anger$total = "86"
+kano_16_anger$sentiment = "Anger"
+kano_16_anger$artist = "Kano - Made in the Manor"
+kano_16_anger$date = "04/03/16"
+kano_16_anger$date <- as.Date(kano_16_anger$date, "%d/%m/%y")
+
+###
+
+giggs_16_anger <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_anger$total = "78"
+giggs_16_anger$sentiment = "Anger"
+giggs_16_anger$artist = "Giggs - Landlord"
+giggs_16_anger$date = "05/08/16"
+giggs_16_anger$date <- as.Date(giggs_16_anger$date, "%d/%m/%y")
+
+###
+
+wretch_16_anger <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_anger$total = "62"
+wretch_16_anger$sentiment = "Anger"
+wretch_16_anger$artist = "Wretch 32 - Growing Over Life"
+wretch_16_anger$date = "02/09/16"
+wretch_16_anger$date <- as.Date(wretch_16_anger$date, "%d/%m/%y")
+
+###
+
+bane_16_anger <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_anger$total = "32"
+bane_16_anger$sentiment = "Anger"
+bane_16_anger$artist = "Yxng Bane - Full Moon"
+bane_16_anger$date = "17/04/16"
+bane_16_anger$date <- as.Date(bane_16_anger$date, "%d/%m/%y")
+
+###
+
+overall_2016_anger <-
+  bind_rows(skepta_16_anger,
+            kano_16_anger,
+            giggs_16_anger,
+            wretch_16_anger,
+            bane_16_anger) 
+
+
+#trust
+skepta_16_trust <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_trust$total = "66"
+skepta_16_trust$sentiment = "Trust"
+skepta_16_trust$artist = "Skepta - Konnichiwa"
+skepta_16_trust$date = "06/05/16"
+skepta_16_trust$date <- as.Date(skepta_16_trust$date, "%d/%m/%y")
+
+###
+
+kano_16_trust <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_trust$total = "100"
+kano_16_trust$sentiment = "Trust"
+kano_16_trust$artist = "Kano - Made in the Manor"
+kano_16_trust$date = "04/03/16"
+kano_16_trust$date <- as.Date(kano_16_trust$date, "%d/%m/%y")
+
+###
+
+giggs_16_trust <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_trust$total = "67"
+giggs_16_trust$sentiment = "Trust"
+giggs_16_trust$artist = "Giggs - Landlord"
+giggs_16_trust$date = "05/08/16"
+giggs_16_trust$date <- as.Date(giggs_16_trust$date, "%d/%m/%y")
+
+###
+
+wretch_16_trust <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_trust$total = "79"
+wretch_16_trust$sentiment = "Trust"
+wretch_16_trust$artist = "Wretch 32 - Growing Over Life"
+wretch_16_trust$date = "02/09/16"
+wretch_16_trust$date <- as.Date(wretch_16_trust$date, "%d/%m/%y")
+
+###
+
+bane_16_trust <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_trust$total = "31"
+bane_16_trust$sentiment = "Trust"
+bane_16_trust$artist = "Yxng Bane - Full Moon"
+bane_16_trust$date = "17/04/16"
+bane_16_trust$date <- as.Date(bane_16_trust$date, "%d/%m/%y")
+
+###
+
+overall_2016_trust <-
+  bind_rows(skepta_16_trust,
+            kano_16_trust,
+            giggs_16_trust,
+            wretch_16_trust,
+            bane_16_trust) 
+
+#anticipation
+skepta_16_anticipation <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_anticipation$total = "48"
+skepta_16_anticipation$sentiment = "Anticipation"
+skepta_16_anticipation$artist = "Skepta - Konnichiwa"
+skepta_16_anticipation$date = "06/05/16"
+skepta_16_anticipation$date <-
+  as.Date(skepta_16_anticipation$date, "%d/%m/%y")
+
+###
+
+kano_16_anticipation <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_anticipation$total = "70"
+kano_16_anticipation$sentiment = "Anticipation"
+kano_16_anticipation$artist = "Kano - Made in the Manor"
+kano_16_anticipation$date = "04/03/16"
+kano_16_anticipation$date <-
+  as.Date(kano_16_anticipation$date, "%d/%m/%y")
+
+###
+
+giggs_16_anticipation <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_anticipation$total = "63"
+giggs_16_anticipation$sentiment = "Anticipation"
+giggs_16_anticipation$artist = "Giggs - Landlord"
+giggs_16_anticipation$date = "05/08/16"
+giggs_16_anticipation$date <-
+  as.Date(giggs_16_anticipation$date, "%d/%m/%y")
+
+###
+
+wretch_16_anticipation <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_anticipation$total = "59"
+wretch_16_anticipation$sentiment = "Anticipation"
+wretch_16_anticipation$artist = "Wretch 32 - Growing Over Life"
+wretch_16_anticipation$date = "02/09/16"
+wretch_16_anticipation$date <-
+  as.Date(wretch_16_anticipation$date, "%d/%m/%y")
+
+###
+
+bane_16_anticipation <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_anticipation$total = "25"
+bane_16_anticipation$sentiment = "Anticipation"
+bane_16_anticipation$artist = "Yxng Bane - Full Moon"
+bane_16_anticipation$date = "17/04/16"
+bane_16_anticipation$date <-
+  as.Date(bane_16_anticipation$date, "%d/%m/%y")
+
+###
+
+overall_2016_anticipation <-
+  bind_rows(
+    skepta_16_anticipation,
+    kano_16_anticipation,
+    giggs_16_anticipation,
+    wretch_16_anticipation,
+    bane_16_anticipation
+  ) 
+
+#fear
+skepta_16_fear <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_fear$total = "48"
+skepta_16_fear$sentiment = "Fear"
+skepta_16_fear$artist = "Skepta - Konnichiwa"
+skepta_16_fear$date = "06/05/16"
+skepta_16_fear$date <- as.Date(skepta_16_fear$date, "%d/%m/%y")
+
+###
+
+kano_16_fear <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_fear$total = "85"
+kano_16_fear$sentiment = "Fear"
+kano_16_fear$artist = "Kano - Made in the Manor"
+kano_16_fear$date = "04/03/16"
+kano_16_fear$date <- as.Date(kano_16_fear$date, "%d/%m/%y")
+
+###
+
+giggs_16_fear <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_fear$total = "82"
+giggs_16_fear$sentiment = "Fear"
+giggs_16_fear$artist = "Giggs - Landlord"
+giggs_16_fear$date = "05/08/16"
+giggs_16_fear$date <- as.Date(giggs_16_fear$date, "%d/%m/%y")
+
+###
+
+wretch_16_fear <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_fear$total = "73"
+wretch_16_fear$sentiment = "Fear"
+wretch_16_fear$artist = "Wretch 32 - Growing Over Life"
+wretch_16_fear$date = "02/09/16"
+wretch_16_fear$date <- as.Date(wretch_16_fear$date, "%d/%m/%y")
+
+###
+
+bane_16_fear <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_fear$total = "31"
+bane_16_fear$sentiment = "Fear"
+bane_16_fear$artist = "Yxng Bane - Full Moon"
+bane_16_fear$date = "17/04/16"
+bane_16_fear$date <- as.Date(bane_16_fear$date, "%d/%m/%y")
+
+###
+
+overall_2016_fear <-
+  bind_rows(skepta_16_fear,
+            kano_16_fear,
+            giggs_16_fear,
+            wretch_16_fear,
+            bane_16_fear) 
+
+
+#joy
+skepta_16_joy <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_joy$total = "47"
+skepta_16_joy$sentiment = "Joy"
+skepta_16_joy$artist = "Skepta - Konnichiwa"
+skepta_16_joy$date = "06/05/16"
+skepta_16_joy$date <- as.Date(skepta_16_joy$date, "%d/%m/%y")
+
+###
+
+kano_16_joy <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_joy$total = "88"
+kano_16_joy$sentiment = "Joy"
+kano_16_joy$artist = "Kano - Made in the Manor"
+kano_16_joy$date = "04/03/16"
+kano_16_joy$date <- as.Date(kano_16_joy$date, "%d/%m/%y")
+
+###
+
+giggs_16_joy <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_joy$total = "54"
+giggs_16_joy$sentiment = "Joy"
+giggs_16_joy$artist = "Giggs - Landlord"
+giggs_16_joy$date = "05/08/16"
+giggs_16_joy$date <- as.Date(giggs_16_joy$date, "%d/%m/%y")
+
+###
+
+wretch_16_joy <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_joy$total = "69"
+wretch_16_joy$sentiment = "Joy"
+wretch_16_joy$artist = "Wretch 32 - Growing Over Life"
+wretch_16_joy$date = "02/09/16"
+wretch_16_joy$date <- as.Date(wretch_16_joy$date, "%d/%m/%y")
+
+###
+
+bane_16_joy <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_joy$total = "19"
+bane_16_joy$sentiment = "Joy"
+bane_16_joy$artist = "Yxng Bane - Full Moon"
+bane_16_joy$date = "17/04/16"
+bane_16_joy$date <- as.Date(bane_16_joy$date, "%d/%m/%y")
+
+###
+
+overall_2016_joy <-
+  bind_rows(skepta_16_joy,
+            kano_16_joy,
+            giggs_16_joy,
+            wretch_16_joy,
+            bane_16_joy) 
+
+
+#surprise
+skepta_16_surprise <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_surprise$total = "33"
+skepta_16_surprise$sentiment = "Surprise"
+skepta_16_surprise$artist = "Skepta - Konnichiwa"
+skepta_16_surprise$date = "06/05/16"
+skepta_16_surprise$date <-
+  as.Date(skepta_16_surprise$date, "%d/%m/%y")
+
+###
+
+kano_16_surprise <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_surprise$total = "40"
+kano_16_surprise$sentiment = "Surprise"
+kano_16_surprise$artist = "Kano - Made in the Manor"
+kano_16_surprise$date = "04/03/16"
+kano_16_surprise$date <- as.Date(kano_16_surprise$date, "%d/%m/%y")
+
+###
+
+giggs_16_surprise <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_surprise$total = "40"
+giggs_16_surprise$sentiment = "Surprise"
+giggs_16_surprise$artist = "Giggs - Landlord"
+giggs_16_surprise$date = "05/08/16"
+giggs_16_surprise$date <-
+  as.Date(giggs_16_surprise$date, "%d/%m/%y")
+
+###
+
+wretch_16_surprise <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_surprise$total = "38"
+wretch_16_surprise$sentiment = "Surprise"
+wretch_16_surprise$artist = "Wretch 32 - Growing Over Life"
+wretch_16_surprise$date = "02/09/16"
+wretch_16_surprise$date <-
+  as.Date(wretch_16_surprise$date, "%d/%m/%y")
+
+###
+
+bane_16_surprise <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_surprise$total = "11"
+bane_16_surprise$sentiment = "Surprise"
+bane_16_surprise$artist = "Yxng Bane - Full Moon"
+bane_16_surprise$date = "17/04/16"
+bane_16_surprise$date <- as.Date(bane_16_surprise$date, "%d/%m/%y")
+
+###
+
+overall_2016_surprise <-
+  bind_rows(
+    skepta_16_surprise,
+    kano_16_surprise,
+    giggs_16_surprise,
+    wretch_16_surprise,
+    bane_16_surprise
+  ) 
+
+
+
+#disgust
+skepta_16_disgust <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_disgust$total = "27"
+skepta_16_disgust$sentiment = "Disgust"
+skepta_16_disgust$artist = "Skepta - Konnichiwa"
+skepta_16_disgust$date = "06/05/16"
+skepta_16_disgust$date <-
+  as.Date(skepta_16_disgust$date, "%d/%m/%y")
+
+###
+
+kano_16_disgust <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_disgust$total = "57"
+kano_16_disgust$sentiment = "Disgust"
+kano_16_disgust$artist = "Kano - Made in the Manor"
+kano_16_disgust$date = "04/03/16"
+kano_16_disgust$date <- as.Date(kano_16_disgust$date, "%d/%m/%y")
+
+###
+
+giggs_16_disgust <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_disgust$total = "54"
+giggs_16_disgust$sentiment = "Disgust"
+giggs_16_disgust$artist = "Giggs - Landlord"
+giggs_16_disgust$date = "05/08/16"
+giggs_16_disgust$date <- as.Date(giggs_16_disgust$date, "%d/%m/%y")
+
+###
+
+wretch_16_disgust <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_disgust$total = "34"
+wretch_16_disgust$sentiment = "Disgust"
+wretch_16_disgust$artist = "Wretch 32 - Growing Over Life"
+wretch_16_disgust$date = "02/09/16"
+wretch_16_disgust$date <-
+  as.Date(wretch_16_disgust$date, "%d/%m/%y")
+
+###
+
+bane_16_disgust <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_disgust$total = "27"
+bane_16_disgust$sentiment = "Disgust"
+bane_16_disgust$artist = "Yxng Bane - Full Moon"
+bane_16_disgust$date = "17/04/16"
+bane_16_disgust$date <- as.Date(bane_16_disgust$date, "%d/%m/%y")
+
+###
+
+overall_2016_disgust <-
+  bind_rows(
+    skepta_16_disgust,
+    kano_16_disgust,
+    giggs_16_disgust,
+    wretch_16_disgust,
+    bane_16_disgust
+  ) 
+
+
+#sadness
+skepta_16_sadness <- konnichiwa %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+skepta_16_sadness$total = "42"
+skepta_16_sadness$sentiment = "Sadness"
+skepta_16_sadness$artist = "Skepta - Konnichiwa"
+skepta_16_sadness$date = "06/05/16"
+skepta_16_sadness$date <-
+  as.Date(skepta_16_sadness$date, "%d/%m/%y")
+
+###
+
+kano_16_sadness <- made_in_the_manor %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+kano_16_sadness$total = "74"
+kano_16_sadness$sentiment = "Sadness"
+kano_16_sadness$artist = "Kano - Made in the Manor"
+kano_16_sadness$date = "04/03/16"
+kano_16_sadness$date <- as.Date(kano_16_sadness$date, "%d/%m/%y")
+
+###
+
+giggs_16_sadness <- landlord %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_16_sadness$total = "61"
+giggs_16_sadness$sentiment = "Sadness"
+giggs_16_sadness$artist = "Giggs - Landlord"
+giggs_16_sadness$date = "05/08/16"
+giggs_16_sadness$date <- as.Date(giggs_16_sadness$date, "%d/%m/%y")
+
+###
+
+wretch_16_sadness <- growing_over_life %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+wretch_16_sadness$total = "68"
+wretch_16_sadness$sentiment = "Sadness"
+wretch_16_sadness$artist = "Wretch 32 - Growing Over Life"
+wretch_16_sadness$date = "02/09/16"
+wretch_16_sadness$date <-
+  as.Date(wretch_16_sadness$date, "%d/%m/%y")
+
+###
+
+bane_16_sadness <- full_moon %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+bane_16_sadness$total = "28"
+bane_16_sadness$sentiment = "Sadness"
+bane_16_sadness$artist = "Yxng Bane - Full Moon"
+bane_16_sadness$date = "17/04/16"
+bane_16_sadness$date <- as.Date(bane_16_sadness$date, "%d/%m/%y")
+
+###
+
+overall_2016_sadness <-
+  bind_rows(
+    skepta_16_sadness,
+    kano_16_sadness,
+    giggs_16_sadness,
+    wretch_16_sadness,
+    bane_16_sadness
+  ) 
+
+
+sentiments_2016 <-
+  bind_rows(
+    overall_2016_anger,
+    overall_2016_trust,
+    overall_2016_anticipation,
+    overall_2016_fear,
+    overall_2016_joy,
+    overall_2016_surprise,
+    overall_2016_disgust,
+    overall_2016_sadness
+  )
+
+library(ggplot2)
+
+  ggplot(sentiments_2016,
+         aes(
+           x = date,
+           y = total,
+           color = sentiment,
+           group = sentiment
+         )) + 
+  geom_line(size = 1) +
+  geom_point(aes(key = artist), position = position_dodge(width = 0.8)) +
+  
+  xlab("Year") + 
+  ylab("Number of sentiment words") + 
+  ggtitle("Different sentiments in grime music over the last decade")  +
+  
+  theme_economist() 
+  
+  
+  
+  
+  #anger
+stormzy_17_anger <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_anger$total = "69"
+stormzy_17_anger$sentiment = "Anger"
+stormzy_17_anger$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_anger$date = "24/02/17"
+stormzy_17_anger$date <- as.Date(stormzy_17_anger$date, "%d/%m/%y")
+
+###
+
+bugzy_17_anger <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_anger$total = "44"
+bugzy_17_anger$sentiment = "Anger"
+bugzy_17_anger$artist = "Bugzy Malone - King of the North"
+bugzy_17_anger$date = "14/07/17"
+bugzy_17_anger$date <- as.Date(bugzy_17_anger$date, "%d/%m/%y")
+
+###
+
+wiley_17_anger <- godfather %>%
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_anger$total = "63"
+wiley_17_anger$sentiment = "Anger"
+wiley_17_anger$artist = "Wiley - Godfather"
+wiley_17_anger$date = "13/01/17"
+wiley_17_anger$date <- as.Date(wiley_17_anger$date, "%d/%m/%y")
+
+###
+
+dizzee_17_anger <- raskit %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_anger$total = "90"
+dizzee_17_anger$sentiment = "Anger"
+dizzee_17_anger$artist = "Dizzee Rascal - Raskit"
+dizzee_17_anger$date = "21/07/17"
+dizzee_17_anger$date <- as.Date(dizzee_17_anger$date, "%d/%m/%y")
+
+###
+
+jhus_17_anger <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_anger$total = "54"
+jhus_17_anger$sentiment = "Anger"
+jhus_17_anger$artist = "JHus - Common Sense"
+jhus_17_anger$date = "12/05/17"
+jhus_17_anger$date <- as.Date(jhus_17_anger$date, "%d/%m/%y")
+
+###
+
+overall_2017_anger <-
+  bind_rows(stormzy_17_anger,
+            bugzy_17_anger,
+            wiley_17_anger,
+            dizzee_17_anger,
+            jhus_17_anger)
+
+
+#trust
+stormzy_17_trust <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_trust$total = "70"
+stormzy_17_trust$sentiment = "Trust"
+stormzy_17_trust$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_trust$date = "24/02/17"
+stormzy_17_trust$date <- as.Date(stormzy_17_trust$date, "%d/%m/%y")
+
+###
+
+bugzy_17_trust <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_trust$total = "40"
+bugzy_17_trust$sentiment = "Trust"
+bugzy_17_trust$artist = "Bugzy Malone - King of the North"
+bugzy_17_trust$date = "14/07/17"
+bugzy_17_trust$date <- as.Date(bugzy_17_trust$date, "%d/%m/%y")
+
+###
+
+wiley_17_trust <- godfather %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_trust$total = "73"
+wiley_17_trust$sentiment = "Trust"
+wiley_17_trust$artist = "Wiley - Godfather"
+wiley_17_trust$date = "13/01/17"
+wiley_17_trust$date <- as.Date(wiley_17_trust$date, "%d/%m/%y")
+
+###
+
+dizzee_17_trust <- raskit %>%
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_trust$total = "83"
+dizzee_17_trust$sentiment = "Trust"
+dizzee_17_trust$artist = "Dizzee Rascal - Raskit"
+dizzee_17_trust$date = "21/07/17"
+dizzee_17_trust$date <- as.Date(dizzee_17_trust$date, "%d/%m/%y")
+
+###
+
+jhus_17_trust <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_trust$total = "75"
+jhus_17_trust$sentiment = "Trust"
+jhus_17_trust$artist = "JHus - Common Sense"
+jhus_17_trust$date = "12/05/17"
+jhus_17_trust$date <- as.Date(jhus_17_trust$date, "%d/%m/%y")
+
+###
+
+overall_2017_trust <-
+  bind_rows(stormzy_17_trust,
+            bugzy_17_trust,
+            wiley_17_trust,
+            dizzee_17_trust,
+            jhus_17_trust) 
+
+
+#anticipation
+stormzy_17_anticipation <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_anticipation$total = "61"
+stormzy_17_anticipation$sentiment = "Anticipation"
+stormzy_17_anticipation$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_anticipation$date = "24/02/17"
+stormzy_17_anticipation$date <-
+  as.Date(stormzy_17_anticipation$date, "%d/%m/%y")
+
+###
+
+bugzy_17_anticipation <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_anticipation$total = "33"
+bugzy_17_anticipation$sentiment = "Anticipation"
+bugzy_17_anticipation$artist = "Bugzy Malone - King of the North"
+bugzy_17_anticipation$date = "14/07/17"
+bugzy_17_anticipation$date <-
+  as.Date(bugzy_17_anticipation$date, "%d/%m/%y")
+
+###
+
+wiley_17_anticipation <- godfather %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_anticipation$total = "62"
+wiley_17_anticipation$sentiment = "Anticipation"
+wiley_17_anticipation$artist = "Wiley - Godfather"
+wiley_17_anticipation$date = "13/01/17"
+wiley_17_anticipation$date <-
+  as.Date(wiley_17_anticipation$date, "%d/%m/%y")
+
+###
+
+dizzee_17_anticipation <- raskit %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_anticipation$total = "69"
+dizzee_17_anticipation$sentiment = "Anticipation"
+dizzee_17_anticipation$artist = "Dizzee Rascal - Raskit"
+dizzee_17_anticipation$date = "21/07/17"
+dizzee_17_anticipation$date <-
+  as.Date(dizzee_17_anticipation$date, "%d/%m/%y")
+
+###
+
+jhus_17_anticipation <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_anticipation$total = "59"
+jhus_17_anticipation$sentiment = "Anticipation"
+jhus_17_anticipation$artist = "JHus - Common Sense"
+jhus_17_anticipation$date = "12/05/17"
+jhus_17_anticipation$date <-
+  as.Date(jhus_17_anticipation$date, "%d/%m/%y")
+
+###
+
+overall_2017_anticipation <-
+  bind_rows(
+    stormzy_17_anticipation,
+    bugzy_17_anticipation,
+    wiley_17_anticipation,
+    dizzee_17_anticipation,
+    jhus_17_anticipation
+  ) 
+
+#fear
+stormzy_17_fear <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_fear$total = "71"
+stormzy_17_fear$sentiment = "Fear"
+stormzy_17_fear$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_fear$date = "24/02/17"
+stormzy_17_fear$date <- as.Date(stormzy_17_fear$date, "%d/%m/%y")
+
+###
+
+bugzy_17_fear <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_fear$total = "42"
+bugzy_17_fear$sentiment = "Fear"
+bugzy_17_fear$artist = "Bugzy Malone - King of the North"
+bugzy_17_fear$date = "14/07/17"
+bugzy_17_fear$date <- as.Date(bugzy_17_fear$date, "%d/%m/%y")
+
+###
+
+wiley_17_fear <- godfather %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_fear$total = "72"
+wiley_17_fear$sentiment = "Fear"
+wiley_17_fear$artist = "Wiley - Godfather"
+wiley_17_fear$date = "13/01/17"
+wiley_17_fear$date <- as.Date(wiley_17_fear$date, "%d/%m/%y")
+
+###
+
+dizzee_17_fear <- raskit %>% 
+unnest_tokens(word, lyric) %>%
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_fear$total = "94"
+dizzee_17_fear$sentiment = "Fear"
+dizzee_17_fear$artist = "Dizzee Rascal - Raskit"
+dizzee_17_fear$date = "21/07/17"
+dizzee_17_fear$date <- as.Date(dizzee_17_fear$date, "%d/%m/%y")
+
+###
+
+jhus_17_fear <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_fear$total = "62"
+jhus_17_fear$sentiment = "Fear"
+jhus_17_fear$artist = "JHus - Common Sense"
+jhus_17_fear$date = "12/05/17"
+jhus_17_fear$date <- as.Date(jhus_17_fear$date, "%d/%m/%y")
+
+###
+
+overall_2017_fear <-
+  bind_rows(stormzy_17_fear,
+            bugzy_17_fear,
+            wiley_17_fear,
+            dizzee_17_fear,
+            jhus_17_fear) 
+
+
+#joy
+stormzy_17_joy <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_joy$total = "54"
+stormzy_17_joy$sentiment = "Joy"
+stormzy_17_joy$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_joy$date = "24/02/17"
+stormzy_17_joy$date <- as.Date(stormzy_17_joy$date, "%d/%m/%y")
+
+###
+
+bugzy_17_joy <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_joy$total = "32"
+bugzy_17_joy$sentiment = "Joy"
+bugzy_17_joy$artist = "Bugzy Malone - King of the North"
+bugzy_17_joy$date = "14/07/17"
+bugzy_17_joy$date <- as.Date(bugzy_17_joy$date, "%d/%m/%y")
+
+###
+
+wiley_17_joy <- godfather %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_joy$total = "57"
+wiley_17_joy$sentiment = "Joy"
+wiley_17_joy$artist = "Wiley - Godfather"
+wiley_17_joy$date = "13/01/17"
+wiley_17_joy$date <- as.Date(wiley_17_joy$date, "%d/%m/%y")
+
+###
+
+dizzee_17_joy <- raskit %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_joy$total = "59"
+dizzee_17_joy$sentiment = "Joy"
+dizzee_17_joy$artist = "Dizzee Rascal - Raskit"
+dizzee_17_joy$date = "21/07/17"
+dizzee_17_joy$date <- as.Date(dizzee_17_joy$date, "%d/%m/%y")
+
+###
+
+jhus_17_joy <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_joy$total = "50"
+jhus_17_joy$sentiment = "Joy"
+jhus_17_joy$artist = "JHus - Common Sense"
+jhus_17_joy$date = "12/05/17"
+jhus_17_joy$date <- as.Date(jhus_17_joy$date, "%d/%m/%y")
+
+###
+
+overall_2017_joy <-
+  bind_rows(stormzy_17_joy,
+            bugzy_17_joy,
+            wiley_17_joy,
+            dizzee_17_joy,
+            jhus_17_joy) 
+
+#surprise
+stormzy_17_surprise <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_surprise$total = "38"
+stormzy_17_surprise$sentiment = "Surprise"
+stormzy_17_surprise$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_surprise$date = "24/02/17"
+stormzy_17_surprise$date <-
+  as.Date(stormzy_17_surprise$date, "%d/%m/%y")
+
+###
+
+bugzy_17_surprise <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_surprise$total = "38"
+bugzy_17_surprise$sentiment = "Surprise"
+bugzy_17_surprise$artist = "Bugzy Malone - King of the North"
+bugzy_17_surprise$date = "14/07/17"
+bugzy_17_surprise$date <-
+  as.Date(bugzy_17_surprise$date, "%d/%m/%y")
+
+###
+
+wiley_17_surprise <- godfather %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_surprise$total = "39"
+wiley_17_surprise$sentiment = "Surprise"
+wiley_17_surprise$artist = "Wiley - Godfather"
+wiley_17_surprise$date = "13/01/17"
+wiley_17_surprise$date <-
+  as.Date(wiley_17_surprise$date, "%d/%m/%y")
+
+###
+
+dizzee_17_surprise <- raskit %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_surprise$total = "44"
+dizzee_17_surprise$sentiment = "Surprise"
+dizzee_17_surprise$artist = "Dizzee Rascal - Raskit"
+dizzee_17_surprise$date = "21/07/17"
+dizzee_17_surprise$date <-
+  as.Date(dizzee_17_surprise$date, "%d/%m/%y")
+
+###
+
+jhus_17_surprise <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_surprise$total = "30"
+jhus_17_surprise$sentiment = "Surprise"
+jhus_17_surprise$artist = "JHus - Common Sense"
+jhus_17_surprise$date = "12/05/17"
+jhus_17_surprise$date <- as.Date(jhus_17_surprise$date, "%d/%m/%y")
+
+###
+
+overall_2017_surprise <-
+  bind_rows(
+    stormzy_17_surprise,
+    bugzy_17_surprise,
+    wiley_17_surprise,
+    dizzee_17_surprise,
+    jhus_17_surprise
+  ) 
+
+
+#disgust
+stormzy_17_disgust <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_disgust$total = "36"
+stormzy_17_disgust$sentiment = "Disgust"
+stormzy_17_disgust$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_disgust$date = "24/02/17"
+stormzy_17_disgust$date <-
+  as.Date(stormzy_17_disgust$date, "%d/%m/%y")
+
+###
+
+bugzy_17_disgust <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_disgust$total = "25"
+bugzy_17_disgust$sentiment = "Disgust"
+bugzy_17_disgust$artist = "Bugzy Malone - King of the North"
+bugzy_17_disgust$date = "14/07/17"
+bugzy_17_disgust$date <- as.Date(bugzy_17_disgust$date, "%d/%m/%y")
+
+###
+
+wiley_17_disgust <- godfather %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_disgust$total = "42"
+wiley_17_disgust$sentiment = "Disgust"
+wiley_17_disgust$artist = "Wiley - Godfather"
+wiley_17_disgust$date = "13/01/17"
+wiley_17_disgust$date <- as.Date(wiley_17_disgust$date, "%d/%m/%y")
+
+###
+
+dizzee_17_disgust <- raskit %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_disgust$total = "75"
+dizzee_17_disgust$sentiment = "Disgust"
+dizzee_17_disgust$artist = "Dizzee Rascal - Raskit"
+dizzee_17_disgust$date = "21/07/17"
+dizzee_17_disgust$date <-
+  as.Date(dizzee_17_disgust$date, "%d/%m/%y")
+
+###
+
+jhus_17_disgust <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_disgust$total = "40"
+jhus_17_disgust$sentiment = "Disgust"
+jhus_17_disgust$artist = "JHus - Common Sense"
+jhus_17_disgust$date = "12/05/17"
+jhus_17_disgust$date <- as.Date(jhus_17_disgust$date, "%d/%m/%y")
+
+###
+
+overall_2017_disgust <-
+  bind_rows(
+    stormzy_17_disgust,
+    bugzy_17_disgust,
+    wiley_17_disgust,
+    dizzee_17_disgust,
+    jhus_17_disgust
+  ) 
+
+
+#sadness
+stormzy_17_sadness <- gang_signs_and_prayer %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+stormzy_17_sadness$total = "57"
+stormzy_17_sadness$sentiment = "Sadness"
+stormzy_17_sadness$artist = "Stormzy - Gang Signs & Prayer"
+stormzy_17_sadness$date = "24/02/17"
+stormzy_17_sadness$date <-
+  as.Date(stormzy_17_sadness$date, "%d/%m/%y")
+
+###
+
+bugzy_17_sadness <- king_of_the_north %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+bugzy_17_sadness$total = "34"
+bugzy_17_sadness$sentiment = "Sadness"
+bugzy_17_sadness$artist = "Bugzy Malone - King of the North"
+bugzy_17_sadness$date = "14/07/17"
+bugzy_17_sadness$date <- as.Date(bugzy_17_sadness$date, "%d/%m/%y")
+
+###
+
+wiley_17_sadness <- godfather %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+wiley_17_sadness$total = "56"
+wiley_17_sadness$sentiment = "Sadness"
+wiley_17_sadness$artist = "Wiley - Godfather"
+wiley_17_sadness$date = "13/01/17"
+wiley_17_sadness$date <- as.Date(wiley_17_sadness$date, "%d/%m/%y")
+
+###
+
+dizzee_17_sadness <- raskit %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+dizzee_17_sadness$total = "67"
+dizzee_17_sadness$sentiment = "Sadness"
+dizzee_17_sadness$artist = "Dizzee Rascal - Raskit"
+dizzee_17_sadness$date = "21/07/17"
+dizzee_17_sadness$date <-
+  as.Date(dizzee_17_sadness$date, "%d/%m/%y")
+
+###
+
+jhus_17_sadness <- common_sense %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+jhus_17_sadness$total = "51"
+jhus_17_sadness$sentiment = "Sadness"
+jhus_17_sadness$artist = "JHus - Common Sense"
+jhus_17_sadness$date = "12/05/17"
+jhus_17_sadness$date <- as.Date(jhus_17_sadness$date, "%d/%m/%y")
+
+###
+
+overall_2017_sadness <-
+  bind_rows(
+    stormzy_17_sadness,
+    bugzy_17_sadness,
+    wiley_17_sadness,
+    dizzee_17_sadness,
+    jhus_17_sadness
+  ) 
+
+
+sentiments_2017 <-
+  bind_rows(
+    overall_2017_anger,
+    overall_2017_trust,
+    overall_2017_anticipation,
+    overall_2017_fear,
+    overall_2017_joy,
+    overall_2017_surprise,
+    overall_2017_disgust,
+    overall_2017_sadness
+  )
+
+library(ggplot2)
+
+  ggplot(sentiments_2017,
+         aes(
+           x = date,
+           y = total,
+           color = sentiment,
+           group = sentiment
+         )) + 
+  geom_line(size = 1) +
+  geom_point(aes(key = artist), position = position_dodge(width = 0.8)) +
+  
+  xlab("Year") + 
+  ylab("Number of sentiment words") + 
+  ggtitle("Different sentiments in grime music over the last decade")  +
+  
+  theme_economist() 
+  
+  
+  
+  #2019 sentiments
+  #anger
+aj_19_anger <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_anger$total = "56"
+aj_19_anger$sentiment = "Anger"
+aj_19_anger$artist = "AJ Tracey - self titled"
+aj_19_anger$date = "08/02/19"
+aj_19_anger$date <- as.Date(aj_19_anger$date, "%d/%m/%y")
+
+###
+
+dave_19_anger <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_anger$total = "82"
+dave_19_anger$sentiment = "Anger"
+dave_19_anger$artist = "Dave - Pyschodrama"
+dave_19_anger$date = "08/03/19"
+dave_19_anger$date <- as.Date(dave_19_anger$date, "%d/%m/%y")
+
+###
+
+giggs_19_anger <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anger_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_anger$total = "67"
+giggs_19_anger$sentiment = "Anger"
+giggs_19_anger$artist = "Giggs - Big Bad"
+giggs_19_anger$date = "22/02/19"
+giggs_19_anger$date <- as.Date(giggs_19_anger$date, "%d/%m/%y")
+
+###
+
+overall_2019_anger <-
+  bind_rows(aj_19_anger, dave_19_anger, giggs_19_anger)
+
+
+#trust
+aj_19_trust <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_trust$total = "57"
+aj_19_trust$sentiment = "Trust"
+aj_19_trust$artist = "AJ Tracey - self titled"
+aj_19_trust$date = "08/02/19"
+aj_19_trust$date <- as.Date(aj_19_trust$date, "%d/%m/%y")
+
+###
+
+dave_19_trust <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_trust$total = "90"
+dave_19_trust$sentiment = "Trust"
+dave_19_trust$artist = "Dave - Pyschodrama"
+dave_19_trust$date = "08/03/19"
+dave_19_trust$date <- as.Date(dave_19_trust$date, "%d/%m/%y")
+
+###
+
+giggs_19_trust <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(trust_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_trust$total = "75"
+giggs_19_trust$sentiment = "Trust"
+giggs_19_trust$artist = "Giggs - Big Bad"
+giggs_19_trust$date = "22/02/19"
+giggs_19_trust$date <- as.Date(giggs_19_trust$date, "%d/%m/%y")
+
+###
+
+overall_2019_trust <-
+  bind_rows(aj_19_trust, dave_19_trust, giggs_19_trust)
+
+
+#anticipation
+aj_19_anticipation <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_anticipation$total = "49"
+aj_19_anticipation$sentiment = "Anticipation"
+aj_19_anticipation$artist = "AJ Tracey - self titled"
+aj_19_anticipation$date = "08/02/19"
+aj_19_anticipation$date <-
+  as.Date(aj_19_anticipation$date, "%d/%m/%y")
+
+###
+
+dave_19_anticipation <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_anticipation$total = "75"
+dave_19_anticipation$sentiment = "Anticipation"
+dave_19_anticipation$artist = "Dave - Pyschodrama"
+dave_19_anticipation$date = "08/03/19"
+dave_19_anticipation$date <-
+  as.Date(dave_19_anticipation$date, "%d/%m/%y")
+
+###
+
+giggs_19_anticipation <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(anticipation_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_anticipation$total = "57"
+giggs_19_anticipation$sentiment = "Anticipation"
+giggs_19_anticipation$artist = "Giggs - Big Bad"
+giggs_19_anticipation$date = "22/02/19"
+giggs_19_anticipation$date <-
+  as.Date(giggs_19_anticipation$date, "%d/%m/%y")
+
+###
+
+overall_2019_anticipation <-
+  bind_rows(aj_19_anticipation,
+            dave_19_anticipation,
+            giggs_19_anticipation)
+
+
+#fear
+aj_19_fear <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_fear$total = "67"
+aj_19_fear$sentiment = "Fear"
+aj_19_fear$artist = "AJ Tracey - self titled"
+aj_19_fear$date = "08/02/19"
+aj_19_fear$date <- as.Date(aj_19_fear$date, "%d/%m/%y")
+
+###
+
+dave_19_fear <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_fear$total = "88"
+dave_19_fear$sentiment = "Fear"
+dave_19_fear$artist = "Dave - Pyschodrama"
+dave_19_fear$date = "08/03/19"
+dave_19_fear$date <- as.Date(dave_19_fear$date, "%d/%m/%y")
+
+###
+
+giggs_19_fear <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(fear_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_fear$total = "77"
+giggs_19_fear$sentiment = "Fear"
+giggs_19_fear$artist = "Giggs - Big Bad"
+giggs_19_fear$date = "22/02/19"
+giggs_19_fear$date <- as.Date(giggs_19_fear$date, "%d/%m/%y")
+
+###
+
+overall_2019_fear <-
+  bind_rows(aj_19_fear, dave_19_fear, giggs_19_fear)
+
+
+#joy
+aj_19_joy <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_joy$total = "42"
+aj_19_joy$sentiment = "Joy"
+aj_19_joy$artist = "AJ Tracey - self titled"
+aj_19_joy$date = "08/02/19"
+aj_19_joy$date <- as.Date(aj_19_joy$date, "%d/%m/%y")
+
+###
+
+dave_19_joy <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_joy$total = "77"
+dave_19_joy$sentiment = "Joy"
+dave_19_joy$artist = "Dave - Pyschodrama"
+dave_19_joy$date = "08/03/19"
+dave_19_joy$date <- as.Date(dave_19_joy$date, "%d/%m/%y")
+
+###
+
+giggs_19_joy <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(joy_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_joy$total = "48"
+giggs_19_joy$sentiment = "Joy"
+giggs_19_joy$artist = "Giggs - Big Bad"
+giggs_19_joy$date = "22/02/19"
+giggs_19_joy$date <- as.Date(giggs_19_joy$date, "%d/%m/%y")
+
+###
+
+overall_2019_joy <- bind_rows(aj_19_joy, dave_19_joy, giggs_19_joy)
+
+
+#surprise
+aj_19_surprise <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_surprise$total = "35"
+aj_19_surprise$sentiment = "Surprise"
+aj_19_surprise$artist = "AJ Tracey - self titled"
+aj_19_surprise$date = "08/02/19"
+aj_19_surprise$date <- as.Date(aj_19_surprise$date, "%d/%m/%y")
+
+###
+
+dave_19_surprise <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_surprise$total = "43"
+dave_19_surprise$sentiment = "Surprise"
+dave_19_surprise$artist = "Dave - Pyschodrama"
+dave_19_surprise$date = "08/03/19"
+dave_19_surprise$date <- as.Date(dave_19_surprise$date, "%d/%m/%y")
+
+###
+
+giggs_19_surprise <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(surprise_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_surprise$total = "33"
+giggs_19_surprise$sentiment = "Surprise"
+giggs_19_surprise$artist = "Giggs - Big Bad"
+giggs_19_surprise$date = "22/02/19"
+giggs_19_surprise$date <-
+  as.Date(giggs_19_surprise$date, "%d/%m/%y")
+
+###
+
+overall_2019_surprise <-
+  bind_rows(aj_19_surprise, dave_19_surprise, giggs_19_surprise)
+
+
+#disgust
+aj_19_disgust <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_disgust$total = "43"
+aj_19_disgust$sentiment = "Disgust"
+aj_19_disgust$artist = "AJ Tracey - self titled"
+aj_19_disgust$date = "08/02/19"
+aj_19_disgust$date <- as.Date(aj_19_disgust$date, "%d/%m/%y")
+
+###
+
+dave_19_disgust <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_disgust$total = "60"
+dave_19_disgust$sentiment = "Disgust"
+dave_19_disgust$artist = "Dave - Pyschodrama"
+dave_19_disgust$date = "08/03/19"
+dave_19_disgust$date <- as.Date(dave_19_disgust$date, "%d/%m/%y")
+
+###
+
+giggs_19_disgust <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(disgust_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_disgust$total = "47"
+giggs_19_disgust$sentiment = "Disgust"
+giggs_19_disgust$artist = "Giggs - Big Bad"
+giggs_19_disgust$date = "22/02/19"
+giggs_19_disgust$date <- as.Date(giggs_19_disgust$date, "%d/%m/%y")
+
+###
+
+overall_2019_disgust <-
+  bind_rows(aj_19_disgust, dave_19_disgust, giggs_19_disgust)
+
+
+#sadness
+aj_19_sadness <- aj_tracey %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+aj_19_sadness$total = "46"
+aj_19_sadness$sentiment = "Sadness"
+aj_19_sadness$artist = "AJ Tracey - self titled"
+aj_19_sadness$date = "08/02/19"
+aj_19_sadness$date <- as.Date(aj_19_sadness$date, "%d/%m/%y")
+
+###
+
+dave_19_sadness <- dave %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+dave_19_sadness$total = "79"
+dave_19_sadness$sentiment = "Sadness"
+dave_19_sadness$artist = "Dave - Pyschodrama"
+dave_19_sadness$date = "08/03/19"
+dave_19_sadness$date <- as.Date(dave_19_sadness$date, "%d/%m/%y")
+
+###
+
+giggs_19_sadness <- big_bad %>% 
+unnest_tokens(word, lyric) %>% 
+anti_join(custom_stop_words_2) %>% 
+semi_join(sadness_sentiment) %>% 
+count(word, sort = TRUE)
+
+giggs_19_sadness$total = "60"
+giggs_19_sadness$sentiment = "Sadness"
+giggs_19_sadness$artist = "Giggs - Big Bad"
+giggs_19_sadness$date = "22/02/19"
+giggs_19_sadness$date <- as.Date(giggs_19_sadness$date, "%d/%m/%y")
+
+###
+
+overall_2019_sadness <-
+  bind_rows(aj_19_sadness, dave_19_sadness, giggs_19_sadness) 
+
+
+sentiments_2019 <-
+  bind_rows(
+    overall_2019_anger,
+    overall_2019_trust,
+    overall_2019_anticipation,
+    overall_2019_fear,
+    overall_2019_joy,
+    overall_2019_surprise,
+    overall_2019_disgust,
+    overall_2019_sadness
+  )
+
+
+library(ggplot2)
+
+albums_19 <- ggplot(sentiments_2019,
+       aes(
+         x = date,
+         y = total,
+         color = sentiment,
+         group = sentiment
+       )) + 
+  geom_line(size = 1) +
+  geom_point(aes(key = artist), position = position_dodge(width = 0.8)) +
+  
+  xlab("Year") + 
+  ylab("Number of sentiment words") + 
+  ggtitle("Different sentiments in grime music over the last decade")  +
+  
+  theme_economist() 
+
+
+  
