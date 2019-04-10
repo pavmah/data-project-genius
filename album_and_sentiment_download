@@ -39,8 +39,7 @@ zip_it_up
 race_against_time <- bind_rows(bang, off_radar, out_of_game, shes_glowing, too_many_man, wheres_brother, zip_it_up)
 
 #the rest of the albums, and other years are below
-#NB: not all album years are included, as I had to scale down the amount of data used due to R crashing
-#track_n has also been removed from each so that it would later bind with the race_against_time data frame, which did not have this because it came from individual songs and not albums
+#NB: track_n has also been removed from each so that it would later bind with the race_against_time data frame, which did not have this because it came from individual songs and not albums
 
 #2009
 microphone_champion <- genius_album(artist = "Skepta", album = "Microphone Champion")
@@ -52,6 +51,77 @@ tongue_n_cheek$track_n <- NULL
 i_am_chipmunk <- genius_album(artist = "Chip", album = "I Am Chipmunk")
 i_am_chipmunk$track_n <- NULL
 
+#2010
+bud_sweat_beers <- genius_album(artist = "Devlin", album = "Bud, Sweat and Beers")
+bud_sweat_beers$track_n <- NULL
+blam <- genius_album(artist = "JME", album = "Blam!")
+blam$track_n <- NULL
+method_to_maadness <- genius_album(artist = "Kano", album = "Method to the Maadness")
+method_to_maadness$track_n <- NULL
+double_think <- genius_album(artist = "Akala", album = "DoubleThink")
+double_think$track_n <- NULL
+third_strike <- genius_album(artist = "Tinchy Stryder", album = "Third Strike")
+third_strike$track_n <- NULL
+
+#2011
+doin_it_again <- genius_album(artist = "Skepta", album = "Doin' It Again")
+doin_it_again$track_n <- NULL
+black_and_white <- genius_album(artist = "Wretch 32", album = "Black and White")
+black_and_white$track_n <- NULL
+wiley_100_publishing <- genius_album(artist = "Wiley", album = "100% Publishing")
+wiley_100_publishing$track_n <- NULL
+best_of_bizzle <- genius_album(artist = "Lethal Bizzle", album = "The Best Of Bizzle")
+best_of_bizzle$track_n <- NULL
+transition <- genius_album(artist = "Chip", album = "Transition")
+transition$track_n <- NULL
+
+#2012
+evolve_or_be_extinct <- genius_album(artist = "Wiley", album = "Evolve Or Be Extinct")
+evolve_or_be_extinct$track_n <- NULL
+knowledge_is_power <- genius_album(artist = "Akala", album = "Knowledge Is Power Vol. 1")
+knowledge_is_power$track_n <- NULL
+blacklisted <- genius_album(artist = "Skepta", album = "Blacklisted")
+blacklisted$track_n <- NULL
+wretchrospective <- genius_album(artist = "Wretch 32", album = "Wretchrospective")
+wretchrospective$track_n <- NULL
+london_boy <- genius_album(artist = "Chip", album = "London Boy")
+london_boy$track_n <- NULL
+
+#2013
+the_fifth <- genius_album(artist = "Dizzee Rascal", album = "The Fifth")
+the_fifth$track_n <- NULL
+the_ascent <- genius_album(artist = "Wiley", album = "The Ascent")
+the_ascent$track_n <- NULL
+young_kingz <- genius_album(artist = "Krept & Konan", album = "Young Kingz")
+young_kingz$track_n <- NULL
+moving_picture <- genius_album(artist = "Devlin", album = "A Moving Picture")
+moving_picture$track_n <- NULL
+thieves_banquet <- genius_album(artist = "Akala", album = "The Thieves Banquet")
+thieves_banquet$track_n <- NULL
+
+#2014
+rebel_with_cause <- genius_album(artist = "Ghetts", album = "Rebel With A Cause")
+rebel_with_cause$track_n <- NULL
+british_nights <- genius_album(artist = "Frisco", album = "British Nights")
+british_nights$track_n <- NULL
+serious_business <- genius_album(artist = "Flowdan", album = "Serious Business EP")
+serious_business$track_n <- NULL
+froggy <- genius_album(artist = "Jaykae", album = "Froggy EP")
+froggy$track_n <- NULL
+str8_murkin <- genius_album(artist = "Giggs", album = "STR8 MURKIN")
+str8_murkin$track_n <- NULL
+
+#2015
+wiley_number_8 <- genius_album(artist = "Wiley", album = "#8")
+wiley_number_8$track_n <- NULL
+long_way_home <- genius_album(artist = "Krept & Konan", album = "The Long Way Home")
+long_way_home$track_n <- NULL
+integrity <- genius_album(artist = "JME", album = "Integrity")
+integrity$track_n <- NULL
+rap_vs_grime <- genius_album(artist = "Chip", album = "Rap VS Grime")
+rap_vs_grime$track_n <- NULL
+the_15th_day <- genius_album(artist = "J Hus", album = "The 15th Day")
+the_15th_day$track_n <- NULL
 
 #2016
 konnichiwa <- genius_album(artist = "Skepta", album = "Konnichiwa")
@@ -65,7 +135,6 @@ growing_over_life$track_n <- NULL
 full_moon <- genius_album(artist = "Yxng Bane", album = "Full Moon")
 full_moon$track_n <- NULL
 
-
 #2017
 gang_signs_and_prayer <- genius_album(artist = "Stormzy", album = "Gang Signs & Prayer")
 gang_signs_and_prayer$track_n <- NULL
@@ -78,6 +147,17 @@ raskit$track_n <- NULL
 common_sense <- genius_album(artist = "J Hus", album = "Common Sense")
 common_sense$track_n <- NULL
 
+#2018
+godfather_II <- genius_album(artist = "Wiley", album = "Godfather II")
+godfather_II$track_n <- NULL
+novelist_guy <- genius_album(artist = "Novelist", album = "Novelist Guy")
+novelist_guy$track_n <- NULL
+b_inspired <- genius_album(artist = "Bugzy Malone", album = "B. Inspired")
+b_inspired$track_n <- NULL
+the_6 <- genius_album(artist = "67", album = "The 6")
+the_6$track_n <- NULL
+hbk <- genius_album(artist = "Yxng Bane", album = "HBK") 
+hbk$track_n <- NULL
 
 #2019
 aj_tracey <- genius_album(artist = "AJ Tracey", album = "AJ Tracey")
@@ -87,10 +167,27 @@ dave$track_n <- NULL
 big_bad <- genius_album(artist = "Giggs", album = "Big Bad")
 big_bad$track_n <- NULL
 
-
 #combining albums by year, and adding year column when binding
 year_2009 <- rbind(race_against_time, microphone_champion, tongue_n_cheek, i_am_chipmunk, catch_22)
 year_2009$year="2009" 
+
+year_2010 <- rbind(bud_sweat_beers, blam, method_to_maadness, double_think, third_strike)
+year_2010$year="2010"
+
+year_2011 <- rbind(doin_it_again, black_and_white, wiley_100_publishing, best_of_bizzle, transition)
+year_2011$year="2011"
+
+year_2012 <- rbind(evolve_or_be_extinct, knowledge_is_power, blacklisted, wretchrospective, london_boy)
+year_2012$year="2012"
+
+year_2013 <- rbind(the_fifth, the_ascent, young_kingz, moving_picture, thieves_banquet)
+year_2013$year="2013"
+
+year_2014 <- rbind(rebel_with_cause, british_nights, serious_business, str8_murkin, froggy)
+year_2014$year="2014"
+
+year_2015 <- rbind(wiley_number_8, long_way_home, integrity, rap_vs_grime, the_15th_day)
+year_2015$year="2015"
 
 year_2016 <- rbind(konnichiwa, made_in_the_manor, landlord, growing_over_life, full_moon)
 year_2016$year="2016"
@@ -98,8 +195,12 @@ year_2016$year="2016"
 year_2017 <- rbind(gang_signs_and_prayer, king_of_the_north, godfather, raskit, common_sense)
 year_2017$year="2017"
 
+year_2018 <- rbind(godfather_II, novelist_guy, b_inspired, the_6, hbk )
+year_2018$year="2018"
+
 year_2019 <- rbind(aj_tracey, dave, big_bad)
 year_2019$year="2019"
+
 
 #sentiments and custom stop words
 
